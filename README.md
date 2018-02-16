@@ -1,1 +1,4 @@
-# vulcanet
+to run
+
+yarn
+yarn start
