@@ -49,6 +49,7 @@ body {
 }
 
 .sidebarAcordeon {
+  text-transform: capitalize;
   background-color: #394B59;
   color: #A1A9B0;
   height: 30px;
@@ -56,7 +57,7 @@ body {
   vertical-align: middle;
   line-height: 30px;
   padding-left: 9px;
-  display: block;
+  display: flex;
   max-width: 100%;
   box-shadow: 0px 1px #202B33;
   margin-top: 1px
@@ -78,6 +79,10 @@ body {
   display: none;
   padding-left: 10px;
   margin: 5px
+}
+.accordeonIcon{
+  margin-left: auto;
+  margin-right: 10px
 }
 
 .active {

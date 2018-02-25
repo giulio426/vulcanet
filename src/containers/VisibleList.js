@@ -3,20 +3,20 @@ import { toggleTodo } from '../actions'
 import Table from '../components/Table'
 import Sidebar from '../components/Sidebar'
 
-//Recebe o comando para efetuar o filtro das linhas
+//Function that filter the table lines
 const getVisibleList = (linhas, filter, text, removePropVal) => {
-  //Quando vier o filtro de remover da sidebar já remove
+  //when exclude prop from the sidebar remove from obj
   if (removePropVal.title) {
     linhas = linhas.filter(row => row[removePropVal.title] != removePropVal.value)
   }
   switch (filter) {
-    //Retorna todas as linhas
+    //return all
     case 'SHOW_ALL':
       return linhas
-    //filtra pelo texto do hader
+    //filtered results by text filter
     case 'TEXT':
       return linhas.filter(t => {
-        let ret = Object.values(t).map(tt => String(tt).indexOf(text) > -1)
+        let ret = Object.values(t).map(tt => String(tt).toLowerCase().indexOf(text) > -1)
         return ret.includes(true);
       }) ;
     default:
@@ -29,8 +29,7 @@ const mapStateToProps = (state) => ({
 })
 
 const VisibleList = connect(
-  mapStateToProps,
-  //mapDispatchToProps
+  mapStateToProps
 )(Table)
 
 export default VisibleList

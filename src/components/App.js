@@ -3,18 +3,21 @@ import TextFilter from '../containers/TextFilter'
 import VisibleList from '../containers/VisibleList'
 import SidebarList from '../containers/SidebarList'
 
+{/* Create the base Component */}
 const App = () => (
   <div>
-    
     <main  className="main" >
+    {/* Insert sideBar Component */}
       <SidebarList/> 
 
       <div style={{width: '100%'}}>
         <div className='header'>
+    {/* Insert filter Component for the accordeon*/}
           <TextFilter/>
           
         </div>
         <div className="main-content">
+    {/* Insert list Component */}
           <VisibleList/>
          
         </div>
@@ -22,12 +25,5 @@ const App = () => (
     </main>
   </div>
 )
-//<AddTodo /> <VisibleTodoList />
-/*
-<span className='btn flat btnHeader btnActive'>List</span>
-          <span className='btn flat btnHeader'>Group by trader</span>
-          <span className='btn flat btnHeader'> chevron down</span>
-          <span className='btn btnHeader disabled raised'>Take Action</span>
-  <footer className="footer"><Footer /></footer>
-*/
+
 export default App

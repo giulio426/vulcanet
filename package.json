@@ -12,6 +12,7 @@
     "react": "^15.5.0",
     "react-dom": "^15.5.0",
     "react-fontawesome": "^1.6.1",
+    "react-icons-kit": "^1.0.7",
     "react-ionicons": "^2.1.6",
     "react-redux": "^5.0.5",
     "redux": "^3.5.2"

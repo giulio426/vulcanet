@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import Line from './Line'
 import TextFilterProps from '../containers/TextFilterProps'
 
+import Icon from 'react-icons-kit';
+import { arrowDown } from 'react-icons-kit/metrize/arrowDown'; 
+import { arrowUp } from 'react-icons-kit/metrize/arrowUp'; 
 
-///// ****** BUscar automaticamente quais as props e seus valores, montar os botoes e adicionar o funcionamento do filtro e do acordeon
-
-
-
-const Sidebar = ({ options, onPropClick, definePropsFilter }) => {
+//define the sidebar component
+const Sidebar = ({ options, onPropClick, definePropsFilter, acordeon, onClickAcordeon }) => {
   console.log('options',options);
+  //change status from number to text
   const defineStatus = (status) => {
     if(status == 1) {
       return 'open'
@@ -19,6 +20,7 @@ const Sidebar = ({ options, onPropClick, definePropsFilter }) => {
       return 'escalated'
     } 
   }
+  //define the color for each priority square
   const definePriority = (priority) => {
     if(priority == 0) {
       return {    'background-color': '#DE4343'}
@@ -29,18 +31,27 @@ const Sidebar = ({ options, onPropClick, definePropsFilter }) => {
     } 
   }
   let input;
+
   return(
     <div className="sidebar">
       <div className='sidebarHeader'>
+        {/* Import the icon asset */}
         <img src={process.env.PUBLIC_URL + '/assets/sidebarHeader.png'} />
       </div>
+
+        {/* Define the filter component */}
       <TextFilterProps/>
       {
         Object.keys(options).map(title => {
+
+          {/* Define each accordeon line */}
+          let active = (acordeon.title == title || definePropsFilter.title == title)? 'active': '';
           return (
             <span>
-              <span className='sidebarAcordeon'>{title}</span>
-              <span className='sidebarAcordeonContent active'>
+              <span className='sidebarAcordeon' onClick={() => onClickAcordeon({title})}>{title} 
+                <Icon className='accordeonIcon' icon={(active) ? arrowUp : arrowDown } />   
+              </span>
+              <span className={`sidebarAcordeonContent ${active}`}>
                 {options[title].map(value => <span className={(definePropsFilter.title && (definePropsFilter.title == title && definePropsFilter.value == value)) ? 'btn flat' : 'btn' } 
                 onClick={() => onPropClick({title, value})}> x {
                   (title == 'status')? defineStatus(value): (title == 'priority')? <span className='priority' style={definePriority(value)}></span> :value}</span>
@@ -54,9 +65,5 @@ const Sidebar = ({ options, onPropClick, definePropsFilter }) => {
       }
     </div>   
 )}
-
-Sidebar.propTypes = {
-
-}
 
 export default Sidebar

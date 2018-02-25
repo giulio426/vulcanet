@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleListProps } from '../actions'
+import { toggleListProps, toggleAccordedon } from '../actions'
 import Sidebar from '../components/Sidebar'
 
 const getOptions = (list, filterText) => {
@@ -9,7 +9,7 @@ const getOptions = (list, filterText) => {
     let pula = false;
     
     if (filterText.length) {
-      pula = !(prop.indexOf(filterText) >= 0);
+      pula = !(prop.toLowerCase().indexOf(filterText.toLowerCase()) >= 0);
     } 
     
     if (!pula) {
@@ -25,11 +25,13 @@ const getOptions = (list, filterText) => {
 
 const mapStateToProps = (state) => ({
   options: getOptions(state.transactions, state.defineTextFilterProps),
-  definePropsFilter: state.definePropsFilter
+  definePropsFilter: state.definePropsFilter,
+  acordeon: state.defineAcordeon
 })
 
 const mapDispatchToProps = {
-  onPropClick: toggleListProps
+  onPropClick: toggleListProps,
+  onClickAcordeon: toggleAccordedon
 }
 
 const SidebarList = connect(

@@ -4,7 +4,8 @@ import Line from './Line'
 import Ionicon from 'react-ionicons'
 
 const Table = ({ transactions }) => {
-  console.log(transactions);
+  
+  {/* Make the table structure */}
   return(
     <table>
       <thead>

@@ -1,6 +1,6 @@
-const definePropsFilter = (state = {}, action) => {
+const defineAcordeon = (state = {}, action) => {
   switch (action.type) {
-    case 'TOGGLE_LIST_PROPS':
+    case 'TOGGLE_ACORDEON':
       //Check if the state is equal to prop, if true return empty
       //Convert both obj to string on verification
       if(JSON.stringify(state) === JSON.stringify(action.prop)) {
@@ -14,4 +14,4 @@ const definePropsFilter = (state = {}, action) => {
   }
 }
 
-export default definePropsFilter
+export default defineAcordeon
