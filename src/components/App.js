@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from './Footer'
 import TextFilter from '../containers/TextFilter'
 import VisibleList from '../containers/VisibleList'
 import SidebarList from '../containers/SidebarList'

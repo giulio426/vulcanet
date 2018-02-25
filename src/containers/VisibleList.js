@@ -3,15 +3,19 @@ import { toggleTodo } from '../actions'
 import Table from '../components/Table'
 import Sidebar from '../components/Sidebar'
 
-const getVisibleTodos = (todos, filter, text, removePropVal) => {
+//Recebe o comando para efetuar o filtro das linhas
+const getVisibleList = (linhas, filter, text, removePropVal) => {
+  //Quando vier o filtro de remover da sidebar já remove
   if (removePropVal.title) {
-    todos = todos.filter(row => row[removePropVal.title] != removePropVal.value)
+    linhas = linhas.filter(row => row[removePropVal.title] != removePropVal.value)
   }
   switch (filter) {
+    //Retorna todas as linhas
     case 'SHOW_ALL':
-      return todos
+      return linhas
+    //filtra pelo texto do hader
     case 'TEXT':
-      return todos.filter(t => {
+      return linhas.filter(t => {
         let ret = Object.values(t).map(tt => String(tt).indexOf(text) > -1)
         return ret.includes(true);
       }) ;
@@ -21,12 +25,8 @@ const getVisibleTodos = (todos, filter, text, removePropVal) => {
 }
 
 const mapStateToProps = (state) => ({
-  transactions: getVisibleTodos(state.transactions, state.visibilityFilter, state.defineTextFilter, state.definePropsFilter)
+  transactions: getVisibleList(state.transactions, state.visibilityFilter, state.defineTextFilter, state.definePropsFilter)
 })
-
-const mapDispatchToProps = {
-  
-}
 
 const VisibleList = connect(
   mapStateToProps,
