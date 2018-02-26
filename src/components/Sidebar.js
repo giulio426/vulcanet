@@ -4,8 +4,8 @@ import Line from './Line'
 import TextFilterProps from '../containers/TextFilterProps'
 
 import Icon from 'react-icons-kit';
-import { arrowDown } from 'react-icons-kit/metrize/arrowDown'; 
-import { arrowUp } from 'react-icons-kit/metrize/arrowUp'; 
+import { ic_expand_less } from 'react-icons-kit/md/ic_expand_less'; 
+import { ic_expand_more } from 'react-icons-kit/md/ic_expand_more'; 
 
 //define the sidebar component
 const Sidebar = ({ options, onPropClick, definePropsFilter, acordeon, onClickAcordeon }) => {
@@ -49,7 +49,7 @@ const Sidebar = ({ options, onPropClick, definePropsFilter, acordeon, onClickAco
           return (
             <span>
               <span className='sidebarAcordeon' onClick={() => onClickAcordeon({title})}>{title} 
-                <Icon className='accordeonIcon' icon={(active) ? arrowUp : arrowDown } />   
+                <Icon className='accordeonIcon' icon={(active) ? ic_expand_less : ic_expand_more } />   
               </span>
               <span className={`sidebarAcordeonContent ${active}`}>
                 {options[title].map(value => <span className={(definePropsFilter.title && (definePropsFilter.title == title && definePropsFilter.value == value)) ? 'btn flat' : 'btn' } 
